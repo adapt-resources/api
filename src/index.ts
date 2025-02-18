@@ -1,18 +1,24 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Bind resources to your worker in `wrangler.jsonc`. After adding bindings, a type definition for the
- * `Env` object can be regenerated with `npm run cf-typegen`.
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+import router, { lazyBuild, buildAdapter } from 'zesti/adapter/cloudflare';
+import build from 'zesti/build/fast';
+import cors from 'zesti/utils/cors';
 
-export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
-	},
-} satisfies ExportedHandler<Env>;
+import { changeAdminSecret } from './utils/admin';
+
+const app = router()
+	.use(
+		cors('https://clubadapt.pages.dev', {
+			allowCredentials: true
+		})
+	);
+
+export default lazyBuild(() => build(app, buildAdapter), {
+	scheduled: (controller) => {
+		switch (controller.cron) {
+			// Every midnight
+			case '0 0 * * *': {
+				changeAdminSecret();
+				break;
+			}
+		}
+	}
+});

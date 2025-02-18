@@ -6,7 +6,6 @@
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
-		"test": "vitest",
 		"cf-typegen": "wrangler types"
 	},
 	"devDependencies": {
@@ -15,5 +14,9 @@
 		"typescript": "^5.5.2",
 		"vitest": "~2.1.9",
 		"wrangler": "^3.108.1"
+	},
+	"dependencies": {
+		"fast-crypt": "^0.0.7",
+		"zesti": "^0.1.14"
 	}
 }
