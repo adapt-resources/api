@@ -3,7 +3,7 @@ import { setToken } from '@/utils/session';
 import router from 'zesti/adapter/cloudflare';
 
 export default router()
-	.post('/login', async (c) => {
+	.post('/', async (c) => {
 		try {
 			const form = await c.req.formData();
 

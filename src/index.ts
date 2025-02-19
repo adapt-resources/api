@@ -1,20 +1,14 @@
-import router, { lazyBuild, buildAdapter } from 'zesti/adapter/cloudflare';
+import { lazyBuild, buildAdapter } from 'zesti/adapter/cloudflare';
 import build from 'zesti/build/fast';
-import cors from 'zesti/utils/cors';
 
+import routes from './routes';
 import { changeAdminSecret } from './utils/admin';
-
-const app = router()
-	.use(
-		cors('https://clubadapt.pages.dev', {
-			allowCredentials: true
-		})
-	);
 
 export default lazyBuild(
 	() => {
+		// Initialization code
 		changeAdminSecret();
-		return build(app, buildAdapter);
+		return build(routes, buildAdapter);
 	},
 	{
 		scheduled: (controller) => {
