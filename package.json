@@ -16,7 +16,7 @@
 		"wrangler": "^3.108.1"
 	},
 	"dependencies": {
-		"fast-crypt": "^0.0.7",
+		"fast-crypt": "^0.0.11",
 		"zesti": "^0.1.14"
 	}
 }

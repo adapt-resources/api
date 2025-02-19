@@ -11,14 +11,20 @@ const app = router()
 		})
 	);
 
-export default lazyBuild(() => build(app, buildAdapter), {
-	scheduled: (controller) => {
-		switch (controller.cron) {
-			// Every midnight
-			case '0 0 * * *': {
-				changeAdminSecret();
-				break;
+export default lazyBuild(
+	() => {
+		changeAdminSecret();
+		return build(app, buildAdapter);
+	},
+	{
+		scheduled: (controller) => {
+			switch (controller.cron) {
+				// Every midnight
+				case '0 0 * * *': {
+					changeAdminSecret();
+					break;
+				}
 			}
 		}
 	}
-});
+);
