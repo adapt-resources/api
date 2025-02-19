@@ -4,7 +4,7 @@ import client from 'zesti/client';
 const secret = prompt('Admin secret:')!;
 
 const res = await client<typeof routes>(
-	'https://adapt-api.aquapi.workers.dev', ['post']
+	'http://localhost:8787', ['post']
 ).post('/admin/author/new', {
 	body: `${prompt('Author name:')}.${prompt('Password:')}`,
 	headers: { Authorization: secret }

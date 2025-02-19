@@ -20,6 +20,7 @@ export default router()
 
 			return c.send(null, 200);
 		} catch (e) {
+			console.error(e);
 			return c.send(null, 500);
 		}
 	});
