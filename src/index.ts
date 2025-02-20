@@ -3,14 +3,11 @@ import build from 'zesti/build/fast';
 
 import routes from './routes';
 import { changeAdminSecret } from './utils/admin';
-import { initPassHasher } from './utils/pwd';
 
 export default lazyBuild(
 	() => {
 		// Initialization code
 		changeAdminSecret();
-		initPassHasher();
-
 		return build(routes, buildAdapter);
 	},
 	{

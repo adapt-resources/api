@@ -11,6 +11,7 @@ export default router()
 
 		try {
 			await c.env.db
+				// TODO: Fix query
 				.prepare('INSERT INTO users (name, pwd) VALUES (?, ?)')
 				.bind(
 					parts[0],

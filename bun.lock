@@ -4,7 +4,7 @@
     "": {
       "name": "adapt-api",
       "dependencies": {
-        "fast-crypt": "^0.0.11",
+        "fast-crypt": "^0.0.12",
         "zesti": "^0.1.14",
       },
       "devDependencies": {
@@ -254,7 +254,7 @@
 
     "expect-type": ["expect-type@1.1.0", "", {}, "sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA=="],
 
-    "fast-crypt": ["fast-crypt@0.0.11", "", {}, "sha512-kF6kvxRqOI5WSpSR+JRbvqNgys3+oOzh/kE2bH3UuiSXCtELMfbndiRLDbH6awMKI1wpJT2e4mu8CYfENk8Mwg=="],
+    "fast-crypt": ["fast-crypt@0.0.12", "", {}, "sha512-my9vmQBiY12wjjbZPHyAr7qefpL+5uHnDMd+NYHq+CedGasW/gzkp8btl8iP/iT/dj9N62uTZvefe8GTRIoAJw=="],
 
     "fsevents": ["fsevents@2.3.3", "", { "os": "darwin" }, "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw=="],
 
