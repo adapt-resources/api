@@ -14,20 +14,20 @@ const [extractToken, setTokenValue] = cookie(
 	'token', opts.maxAge(MAX_AGE_SEC)
 );
 
-export const setToken = async (c: Context, value: string) => {
+export const createSession = async (c: Context, value: string) => {
 	c.headers.push(['Set-Cookie', setTokenValue(value)]);
 	sessions.set(value, {
 		expires: Date.now() + MAX_AGE_MS
 	});
 };
-export const getToken = fn<{ token: string }>(async (next, c) => {
+export const getSession = fn<{ session: string }>(async (next, c) => {
 	const cookie = c.req.headers.get('Cookie');
 	if (cookie !== null) {
-		const token = extractToken(cookie);
-		if (token != null) {
-			const info = sessions.get(token);
+		const id = extractToken(cookie);
+		if (id != null) {
+			const info = sessions.get(id);
 			if (info != null && info.expires > Date.now()) {
-				c.token = token;
+				c.session = id;
 				return next();
 			}
 		}
@@ -35,3 +35,6 @@ export const getToken = fn<{ token: string }>(async (next, c) => {
 
 	return c.send('Invalid token', 403);
 });
+export const revokeSession = (id: string) => {
+	sessions.delete(id);
+};

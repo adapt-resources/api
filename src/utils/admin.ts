@@ -1,4 +1,4 @@
-import { fn } from "zesti";
+import { fn } from 'zesti';
 
 let secret: string;
 

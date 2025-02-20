@@ -9,5 +9,6 @@ export default router()
 			allowCredentials: true
 		})
 	)
+	.get('/', (c) => c.send('ADaPT resources API'))
 	.route('/login', login)
 	.route('/admin', admin);

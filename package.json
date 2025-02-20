@@ -5,8 +5,8 @@
 	"scripts": {
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
-		"start": "wrangler dev",
-		"cf-typegen": "wrangler types"
+		"cf-typegen": "wrangler types",
+		"task": "bun scripts/task.ts"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.6.4",
@@ -17,7 +17,7 @@
 		"wrangler": "^3.108.1"
 	},
 	"dependencies": {
-		"fast-crypt": "^0.0.12",
-		"zesti": "^0.1.14"
+		"fast-crypt": "^0.0.13",
+		"zesti": "^0.1.18"
 	}
 }

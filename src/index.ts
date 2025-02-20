@@ -8,6 +8,7 @@ export default lazyBuild(
 	() => {
 		// Initialization code
 		changeAdminSecret();
+
 		return build(routes, buildAdapter);
 	},
 	{

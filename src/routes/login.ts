@@ -1,6 +1,9 @@
 import { pwdVerify } from '@/utils/pwd';
-import { setToken } from '@/utils/session';
+import { prepare } from '@/utils/query';
+import { createSession } from '@/utils/session';
 import router from 'zesti/adapter/cloudflare';
+
+const selectAuthor = prepare('SELECT (pwd) FROM authors where name = ?');
 
 export default router()
 	.post('/', async (c) => {
@@ -11,18 +14,21 @@ export default router()
 			const pwd = form.get('pwd');
 
 			if (typeof name === 'string' && typeof pwd === 'string') {
-				const res = (await c.env.db
-					.prepare('SELECT (pwd) FROM users where name = ?')
+				const res = await selectAuthor(c)
 					.bind(name)
-					.all<{ pwd: string }>()).results;
+					.first<{ pwd: string }>();
+
+				console.log(res);
 
 				// Yay hash checking
-				if (res.length === 1 && await pwdVerify(res[0].pwd, pwd)) {
-					setToken(c, name);
+				if (res !== null && await pwdVerify(res.pwd, pwd)) {
+					createSession(c, name);
 					return c.send(null, 200);
 				}
 			}
-		} catch {}
+		} catch (e) {
+			console.error(e);
+		}
 
-		return c.send('Invalid username or password', 404);
+		return c.send(null, 404);
 	});

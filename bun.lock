@@ -4,8 +4,8 @@
     "": {
       "name": "adapt-api",
       "dependencies": {
-        "fast-crypt": "^0.0.12",
-        "zesti": "^0.1.14",
+        "fast-crypt": "^0.0.13",
+        "zesti": "^0.1.18",
       },
       "devDependencies": {
         "@cloudflare/vitest-pool-workers": "^0.6.4",
@@ -254,7 +254,7 @@
 
     "expect-type": ["expect-type@1.1.0", "", {}, "sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA=="],
 
-    "fast-crypt": ["fast-crypt@0.0.12", "", {}, "sha512-my9vmQBiY12wjjbZPHyAr7qefpL+5uHnDMd+NYHq+CedGasW/gzkp8btl8iP/iT/dj9N62uTZvefe8GTRIoAJw=="],
+    "fast-crypt": ["fast-crypt@0.0.13", "", {}, "sha512-y6Tr3vkMXTlv5Ay3+5ZhWPqba+nCMZp0cp4DMdQ9RKUNNAnpNAiVsIh0aRMfTFvdycrUjP4krmTmFNUqoAbUEA=="],
 
     "fsevents": ["fsevents@2.3.3", "", { "os": "darwin" }, "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw=="],
 
@@ -364,7 +364,7 @@
 
     "youch": ["youch@3.2.3", "", { "dependencies": { "cookie": "^0.5.0", "mustache": "^4.2.0", "stacktracey": "^2.1.8" } }, "sha512-ZBcWz/uzZaQVdCvfV4uk616Bbpf2ee+F/AvuKDR5EwX/Y4v06xWdtMluqTD7+KlZdM93lLm9gMZYo0sKBS0pgw=="],
 
-    "zesti": ["zesti@0.1.14", "", { "dependencies": { "@mapl/router": "0.3.5" } }, "sha512-VWmyx8/CJK+00D0AgjKGUjn7YdHREvny3EJDah5TNeDwnXb0OgnGDvn7ji+XQ5MRC2NoQIAhQQUb+gw1C4QY4Q=="],
+    "zesti": ["zesti@0.1.18", "", { "dependencies": { "@mapl/router": "0.3.5" } }, "sha512-tfjsdR8MiXgkCnzos8FCuy01iveMwW8vJsPLjv51CmjHYNNdkgmUaoBEZvbwLC+I+zdH6wV7JFMjFtuN7s/BUg=="],
 
     "zod": ["zod@3.24.2", "", {}, "sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ=="],
 
