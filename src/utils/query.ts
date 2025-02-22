@@ -1,6 +1,10 @@
-import type { BaseContext } from 'zesti/adapter/cloudflare';
+// Low initialization cost
+let env: Env;
+export const loadQueries = (e: Env) => env = e;
 
-export const prepare = (query: string) => {
-	let tmp: D1PreparedStatement;
-	return (c: BaseContext) => tmp ??= c.env.db.prepare(query);
+export const batch = (queries: D1PreparedStatement[]) => env.db.batch(queries);
+
+export default (query: string) => {
+	let q: D1PreparedStatement;
+	return (...args: unknown[]) => (q ??= env.db.prepare(query)).bind(...args);
 }

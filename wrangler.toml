@@ -1,0 +1,14 @@
+name = "adapt-api"
+main = "src/index.ts"
+compatibility_date = "2025-02-04"
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "db"
+database_name = "adapt-resources"
+database_id = "71923366-f24c-428f-b070-b90a51c70eed"
+
+[triggers]
+crons = ["0 0 * * *"]
