@@ -1,8 +1,9 @@
+import router from 'zesti/adapter/cloudflare';
+
 import nothrow from '@/utils/nothrow';
 import { pwdVerify } from '@/utils/pwd';
 import query from '@/utils/query';
 import { createSession } from '@/utils/session';
-import router from 'zesti/adapter/cloudflare';
 
 const selectAuthor = query('SELECT (pwd) FROM authors where name = ?');
 
