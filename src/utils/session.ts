@@ -20,6 +20,7 @@ const [extractToken, setTokenValue] = cookie(
 );
 
 // Storing username
+// TODO: Sign the value
 export const createSession = async (c: Context, value: string) => {
 	c.headers.push(['Set-Cookie', setTokenValue(value)]);
 	sessions.set(value, [Date.now() + MAX_AGE_MS, value]);

@@ -1,6 +1,4 @@
-// Low initialization cost
-let env: Env;
-export const loadQueries = (e: Env) => env = e;
+import { env } from './cf/env';
 
 export const batch = (queries: D1PreparedStatement[]) => env.db.batch(queries);
 

@@ -4,15 +4,13 @@ import build from 'zesti/build/fast';
 import routes from './routes';
 
 import { changeAdminSecret } from './utils/admin';
-import { createUTApi } from './utils/ut';
-import { loadQueries } from './utils/query';
+import { loadEnv } from './utils/cf/env';
 
 export default lazyBuild(
 	(env) => {
 		// Initialization code
+		loadEnv(env);
 		changeAdminSecret();
-		createUTApi(env);
-		loadQueries(env);
 
 		return build(routes, buildAdapter);
 	},
