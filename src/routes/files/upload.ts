@@ -20,7 +20,7 @@ export default router()
 				const uploadQueries: D1PreparedStatement[] = [];
 
 				for (
-					let i = 0, results = await ut.uploadFiles(files);
+					let i = 0, results = await ut().uploadFiles(files);
 					i < results.length;
 					i++
 				) {

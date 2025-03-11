@@ -1,20 +1,20 @@
-import routes from '@/routes';
-import client from 'zesti/client';
+import client from './client';
 
-const form = new FormData();
-form.set('name', prompt('Author name:')!);
-form.set('pwd', prompt('Password:')!);
+export const login = async () => {
+	const form = new FormData();
+	form.set('name', prompt('Author name:')!);
+	form.set('pwd', prompt('Password:')!);
 
-const res = await client<typeof routes>(
-	'http://localhost:8787', ['post']
-).post('/login', { body: form });
+	const res = await client.post('/login', { body: form });
 
-switch (res.status) {
-	case 200:
-		console.log('Login successfully!');
-		console.log(res.headers.getSetCookie());
-		break;
-	case 404:
-		console.log('Invalid username or password!');
-		break;
+	switch (res.status) {
+		case 200:
+			console.log('Login successfully!');
+			return res.headers.getSetCookie();
+		case 404:
+			throw new Error('Invalid username or password!');
+	}
 }
+
+if (import.meta.main)
+	console.log(await login());
