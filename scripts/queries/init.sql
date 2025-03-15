@@ -3,5 +3,8 @@ CREATE TABLE IF NOT EXISTS authors (name TEXT PRIMARY KEY, pwd TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS files (
 	name TEXT NOT NULL,
 	url TEXT NOT NULL,
+	topic TEXT NOT NULL,
 	owner TEXT REFERENCES authors (name) ON UPDATE CASCADE
 );
+
+CREATE INDEX topic_idx ON files (topic);

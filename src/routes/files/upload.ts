@@ -5,7 +5,7 @@ import { getSession } from '@/utils/session';
 import ut from '@/utils/ut';
 import nothrow from '@/utils/nothrow';
 
-const uploadFile = query('INSERT INTO files (id, name, url, owner) VALUES (?, ?, ?, ?)');
+const uploadFile = query('INSERT INTO files (id, name, url, topic, owner) VALUES (?, ?, ?, ?)');
 
 export default router()
 	.use(getSession)
@@ -13,9 +13,10 @@ export default router()
 		const form = await nothrow(c.req.formData());
 		if (form != null) {
 			const name = form.get('name');
+			const topic = form.get('topic');
 			const files = form.getAll('file');
 
-			if (typeof name === 'string' && files.every((file) => file instanceof File)) {
+			if (typeof name === 'string' && typeof topic === 'string' && files.every((file) => file instanceof File)) {
 				const failedFiles: string[] = [];
 				const uploadQueries: D1PreparedStatement[] = [];
 
@@ -33,6 +34,7 @@ export default router()
 							uploadFile(
 								res.data.key,
 								name,
+								topic,
 								res.data.ufsUrl,
 								c.session
 							)
