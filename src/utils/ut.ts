@@ -1,15 +1,7 @@
 import { UTApi } from 'uploadthing/server';
-import { lazyLoad } from './cf/env';
+import { env } from 'cloudflare:workers';
 
-let api: UTApi;
-
-lazyLoad(
-	(env) => {
-		api = new UTApi({
-			logLevel: 'Error',
-			token: env.UT_TOKEN
-		});
-	}, 'Load UTApi'
-);
-
-export default () => api;
+export default new UTApi({
+	logLevel: 'Error',
+	token: env.UT_TOKEN
+});

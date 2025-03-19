@@ -1,4 +1,4 @@
-import { env } from './cf/env';
+import { env } from 'cloudflare:workers';
 
 export const batch = (queries: D1PreparedStatement[]) => env.db.batch(queries);
 
