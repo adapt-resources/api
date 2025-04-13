@@ -2,7 +2,7 @@ import cookie from 'fast-crypt/cookie';
 import * as opts from 'fast-crypt/cookie/options';
 
 import { fn } from 'zesti';
-import { Context } from 'zesti/types/route';
+import type { Context } from 'zesti/types/route';
 
 type SessionValue = string;
 

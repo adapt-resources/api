@@ -11,10 +11,8 @@ export default router()
 			getFile(params[0]).first<{ url: string }>()
 		);
 
-		if (result != null) {
-			c.headers.push(['Location', result.url]);
-			return c.send(null, 302);
-		}
+		if (result != null)
+			return fetch(result.url);
 
 		return c.send(null, 404);
 	})
