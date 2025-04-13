@@ -5,7 +5,7 @@ import { getSession } from '@/utils/session';
 import ut from '@/utils/ut';
 import nothrow from '@/utils/nothrow';
 
-const uploadFile = query('INSERT INTO files (id, name, url, topic, owner) VALUES (?, ?, ?, ?)');
+const uploadFile = query('INSERT INTO files (name, url, topic, owner) VALUES (?, ?, ?, ?)');
 
 export default router()
 	.use(getSession)
@@ -32,7 +32,6 @@ export default router()
 					if (res.error === null) {
 						uploadQueries.push(
 							uploadFile(
-								res.data.key,
 								name,
 								topic,
 								res.data.ufsUrl,
